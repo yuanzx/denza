@@ -73,8 +73,7 @@ body {
     line-height: 30px;
 }
 
-select,
-input[type='text'] {
+select,.form-group input {
     width: 173px;
 }
 
