@@ -45,13 +45,12 @@ function submit(){
 	var note = document.getElementById("note").value;
 	var dealer =  document.getElementById("dealer").value;
 	try{
-		ajax("post",domain+"/?r=tdrive",{name:name,tel:tel,title:title,city:city,note:note,dealer:dealer},function(){
+		ajax("post",domain+"/?r=tdrive",{name:encodeURIComponent(name),tel:tel,title:encodeURIComponent(title),city:city,note:encodeURIComponent(note),dealer:dealer},function(){
 			alert("提交成功");
 		})
 	}
 	catch(e){
-		// alert("提交数据出错")
-		throw e;
+		alert("提交数据出错") 
 	}
 	
 }
