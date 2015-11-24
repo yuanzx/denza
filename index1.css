@@ -192,7 +192,7 @@ a:hover {
     html {
         font-size: 12px
     }
-    .content {
+    .content,.title {
         background: url('bg.jpg') no-repeat;
         background-size: cover;
     }
@@ -234,10 +234,6 @@ a:hover {
     .p-all {
         margin: 0;
         padding: 10px 0
-    }
-    .title {
-        background: url('bg.jpg') no-repeat;
-        background-size: cover;
     }
 }
 
