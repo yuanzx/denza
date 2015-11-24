@@ -1,8 +1,3 @@
-var domain = "http://www.denza.com/";
-var isMobile = navigator.userAgent.toLowerCase().indexOf('mobile') > 0 && navigator.userAgent.toLowerCase().indexOf('ipad') < 0;
-var logo = isMobile ? "mobile1.jpg" : "pc.jpg";
-document.getElementById("logo").innerHTML = "<img src='" + logo + "'' alt='腾势电动车' width='100%' border='0' />";
-
 function ajax(method, url, param, callback) {
     var request;
     try {
@@ -89,6 +84,7 @@ function loadCity(fid) {
 }
 
 function initDealer(res) {
+
     document.getElementById("dealer").innerHTML = initOptions(res, "name");
 }
 
@@ -102,4 +98,33 @@ function getScript(src) {
     script.src = src;
     document.getElementsByTagName('head')[0].appendChild(script);
 }
-getScript(domain + "?r=city&fid=0&callback=initProvince");
+
+function preLoadImages(imgs, callback) {
+    var len = imgs.length;
+    var loaded = 0;
+    for (var i = 0; i < len; i++) {
+        (function(i) {
+            var img = new Image();
+            img.onerror = img.onload = function() {
+                loaded++;
+                loaded == len && callback();
+            };
+            img.src = imgs[i];
+        })(i);
+    }
+}
+
+function initPage() {
+    var logo = isMobile ? "mobile1.jpg" : "pc.jpg";
+    var imgs = [logo, "bg.jpg"]
+  
+    preLoadImages(imgs, function() {
+    	document.getElementById("logo").innerHTML = "<img src='" + logo + "'' alt='腾势电动车' width='100%' border='0' />";
+    	document.body.style.display = "block";
+        getScript(domain + "?r=city&fid=0&callback=initProvince"); 
+
+    })
+}    
+var domain = "http://www.denza.com/";
+var isMobile = navigator.userAgent.toLowerCase().indexOf('mobile') > 0 && navigator.userAgent.toLowerCase().indexOf('ipad') < 0;
+document.addEventListener("DOMContentLoaded", initPage, false);

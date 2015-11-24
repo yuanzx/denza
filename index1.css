@@ -5,6 +5,7 @@ html {
 
 body {
     margin: 0;
+    display: none;
 }
 
 #logo {
@@ -99,7 +100,7 @@ label {
 .form-group {
     margin: 15px 0;
     text-align: center;
-    line-height: 24px
+    line-height: 26px
 }
 
 .txt {
@@ -116,9 +117,12 @@ label {
     border-right: 10px solid transparent;
 }
 
+.video:last-child {
+    border-right: none;
+}
+
 .more {
     text-align: center;
-    margin-top: 35px;
     display: none
 }
 
@@ -170,29 +174,30 @@ a:hover {
 .pic1,
 .pic2,
 .pic3 {
-    height: 40px;
-    width: 90px;
+    height: 70px;
+    width: 100px;
     background-size: cover;
-    background-repeat: none
+    margin-bottom: 10px
 }
 
 .pic1 {
-    background-image: url('v1.jpg');
+    background-image: url('pcv1.jpg');
 }
 
 .pic2 {
-    background-image: url('v2.jpg');
+    background-image: url('pcv2.jpg');
 }
 
 .pic3 {
-    background-image: url('v3.jpg');
+    background-image: url('pcv3.jpg');
 }
 
 @media screen and (max-width: 768px) {
     html {
         font-size: 12px
     }
-    .content,.title {
+    .content,
+    .title {
         background: url('bg.jpg') no-repeat;
         background-size: cover;
     }
@@ -230,10 +235,17 @@ a:hover {
     }
     .more {
         display: block;
+        margin-top: 35px;
     }
     .p-all {
         margin: 0;
         padding: 10px 0
+    }
+    .pic1,
+    .pic2,
+    .pic3 {
+        height: 60px;
+        width: 90px;
     }
 }
 
