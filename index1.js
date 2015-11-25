@@ -26,6 +26,7 @@ function ajax(method, url, param, callback) {
 }
 
 function ok() {
+	clickCount("submitForm");
     var name = document.getElementById("name").value.replace(/(^\s*)|(\s*$)/g, '');
     if (name.length < 2) {
         alert("您的姓名至少应为2个字");
@@ -54,7 +55,6 @@ function ok() {
     } catch (e) {
         alert("提交数据出错")
     }
-
 }
 
 function initOptions(res, val) {
@@ -113,7 +113,17 @@ function preLoadImages(imgs, callback) {
         })(i);
     }
 }
-
+function toHomePage(){
+	clickCount("toHomePage")
+}
+function seeVideo(){
+	clickCount("seeVideo")
+}
+function clickCount(eventName){
+	if (typeof totaltag === "function") {
+		totaltag(location.href+"#"+eventName)
+	}
+}
 function initPage() {
     var logo = isMobile ? "mobile1.jpg" : "pc.jpg";
     var imgs = [logo, "bg.jpg"]
