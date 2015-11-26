@@ -49,12 +49,15 @@ function ok() {
             note: encodeURIComponent(note),
             dealer: dealer
         }, function() {
+            clickCount("submitForm");
+            document.getElementById("name").value = "";
+            document.getElementById("tel").value = ""
+            document.getElementById("note").value = "";
             alert("提交成功");
         })
     } catch (e) {
         alert("提交数据出错")
     }
-
 }
 
 function initOptions(res, val) {
@@ -113,7 +116,17 @@ function preLoadImages(imgs, callback) {
         })(i);
     }
 }
-
+function toHomePage(){
+	clickCount("toHomePage")
+}
+function seeVideo(){
+	clickCount("seeVideo")
+}
+function clickCount(eventName){
+	if (typeof totaltag === "function") {
+		totaltag(location.href+"#"+eventName)
+	}
+}
 function initPage() {
     var logo = isMobile ? "mobile1.jpg" : "pc.jpg";
     var imgs = [logo, "bg.jpg"]
