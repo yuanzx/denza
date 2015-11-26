@@ -26,7 +26,6 @@ function ajax(method, url, param, callback) {
 }
 
 function ok() {
-	clickCount("submitForm");
     var name = document.getElementById("name").value.replace(/(^\s*)|(\s*$)/g, '');
     if (name.length < 2) {
         alert("您的姓名至少应为2个字");
@@ -50,6 +49,10 @@ function ok() {
             note: encodeURIComponent(note),
             dealer: dealer
         }, function() {
+            clickCount("submitForm");
+            document.getElementById("name").value = "";
+            document.getElementById("tel").value = ""
+            document.getElementById("note").value = "";
             alert("提交成功");
         })
     } catch (e) {
