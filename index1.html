@@ -5,10 +5,80 @@
     <meta charset="UTF-8">
     <title>腾势纯电动汽车</title>
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="index.css"> 
+    <style>
+    html {
+        font-size: 12px
+    }
+    .content,
+    .title {
+        background: url('bg.jpg') no-repeat;
+        background-size: cover;
+    }
+    .form,
+    .detail {
+        display: block;
+        width: auto;
+        max-width: 350px;
+    }
+    .form {
+        float: none
+    }
+    .detail {
+        text-align: center;
+        padding: 0;
+    }
+    .all {
+        font-size: 13px
+    }
+    .info,
+    .desc {
+        display: none;
+    }
+    .videos {
+        margin: 0 auto;
+    }
+    .video {
+        border-right-width: 15px;
+    }
+    .title {
+        top: -10px;
+    }
+    .detail .more {
+        display: none;
+    }
+    .more {
+        display: block;
+        margin-top: 35px;
+    }
+    .p-all {
+        margin: 0;
+        padding: 10px 0
+    }
+    .pic1,
+    .pic2,
+    .pic3 {
+        height: 60px;
+        width: 90px;
+    }
+
+@media screen and (min-width: 375px) {
+    label {
+        width: 120px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .form {
+        margin: 20px 8px;
+    }
+}
+    </style>   
+    <script src="//tt.mbww.com/tt-24fd7e2735af185459f293eb8704789722c8e46ef86c880322577fe019bb829c.js" async></script>
 </head>
 
 <body>
+
     <div class="container">
         <section id="logo">
         </section>
@@ -29,25 +99,24 @@
                 </p>
                 <div class="videos">
                     <div class="video">
-                        <a href="http://v.qq.com/page/i/4/w/i0170ot4m4w.html" target="_blank" onclick="seeVideo()">
+                        <a href="http://v.qq.com/page/b/l/f/b0170zye9lf.html" target="_blank" id="kol1" onclick="clickCount()">
                             <div class="pic1"></div>
                             <span class="txt">限行篇</span>
                         </a>
                     </div>
                     <div class="video">
-                        <a href="http://v.qq.com/page/p/t/y/p01705asdty.html" target="_blank"  onclick="seeVideo()">
+                        <a href="http://v.qq.com/page/i/4/w/i0170ot4m4w.html" target="_blank" id="kol2"  onclick="clickCount()">
                             <div class="pic2"></div>
                             <span class="txt">油耗篇</span>
                         </a>
                     </div>
                     <div class="video">
-                        <a href="http://v.qq.com/page/b/l/f/b0170zye9lf.html" target="_blank"  onclick="seeVideo()">
+                        <a href="http://v.qq.com/page/p/t/y/p01705asdty.html" target="_blank" id="kol3" onclick="clickCount()">
                             <div class="pic3"></div>
                             <span class="txt">尾气篇</span>
                         </a>
                     </div>
                 </div>
-                <p class="more"><a href="http://www.denza.com/" target="_blank"  onclick="toHomePage()"><span>了解更多，进入官网</span></a></p>
             </section>
             <section class="form">
                 <div class="title">
@@ -89,16 +158,15 @@
                     <label>备注：</label>
                     <input type="text" id="note">
                 </div>
-                <a class="ok" href="javascript:;" onclick="ok();">
+                <a class="ok" id="landing-page-submit" href="javascript:;" onclick="ok();">
                     提交试驾
                 </a>
             </section>
-            <p class="more"><a href="http://www.denza.com/" target="_blank"><span>了解更多，进入官网</span></a></p>
+            <p class="more"><a href="http://www.denza.com/" target="_blank" id="to-homepage" onclick="clickCount()"><span>了解更多，进入官网</span></a></p>
         </div>
     </div>
     <script src="index.js"></script>
-    <script src="//tt.mbww.com/tt-24fd7e2735af185459f293eb8704789722c8e46ef86c880322577fe019bb829c.js" async>
-</script>
+
 </body>
 
 </html>

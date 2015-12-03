@@ -12,13 +12,10 @@ function ajax(method, url, param, callback) {
     }
     request.open(method, url, true);
     request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    var result;
     request.onreadystatechange = function() {
         if (request.readyState == 4) {
             if (request.status == 200) {
-                callback();
-                // result =JSON.parse(request.responseText);
-                // callback(result);
+                callback(request.responseText);
             }
         }
     }
@@ -41,19 +38,18 @@ function ok() {
     var note = document.getElementById("note").value;
     var dealer = document.getElementById("dealer").value;
     try {
-        ajax("post", domain + "/?r=tdrive", {
-            name: encodeURIComponent(name),
-            tel: tel,
-            title: encodeURIComponent(title),
-            city: city,
-            note: encodeURIComponent(note),
-            dealer: dealer
-        }, function() {
-            clickCount("submitForm");
+        ajax("post", domain + "/?r=tdrive", "name="+ encodeURIComponent(name)+
+            "&tel="+ tel+
+            "&title="+ encodeURIComponent(title)+
+            "&city=" + city+
+            "&note="+ encodeURIComponent(note)+
+            "&dealer="+ dealer
+        , function(res) {
+            clickCount("landing-page-submit");
             document.getElementById("name").value = "";
             document.getElementById("tel").value = ""
             document.getElementById("note").value = "";
-            alert("提交成功");
+            alert(res);
         })
     } catch (e) {
         alert("提交数据出错")
@@ -116,28 +112,23 @@ function preLoadImages(imgs, callback) {
         })(i);
     }
 }
-function toHomePage(){
-	clickCount("toHomePage")
-}
-function seeVideo(){
-	clickCount("seeVideo")
-}
-function clickCount(eventName){
+
+function clickCount(id){
 	if (typeof totaltag === "function") {
-		totaltag(location.href+"#"+eventName)
+		totaltag(domain+location.pathname+"#"+id)
 	}
 }
 function initPage() {
     var logo = isMobile ? "mobile1.jpg" : "pc.jpg";
     var imgs = [logo, "bg.jpg"]
-  
+
     preLoadImages(imgs, function() {
     	document.getElementById("logo").innerHTML = "<img src='" + logo + "'' alt='腾势电动车' width='100%' border='0' />";
     	document.body.style.display = "block";
-        getScript(domain + "?r=city&fid=0&callback=initProvince"); 
+        getScript(domain + "?r=city&fid=0&callback=initProvince");
 
     })
-}    
+}
 var domain = "http://www.denza.com/";
 var isMobile = navigator.userAgent.toLowerCase().indexOf('mobile') > 0 && navigator.userAgent.toLowerCase().indexOf('ipad') < 0;
 document.addEventListener("DOMContentLoaded", initPage, false);
