@@ -37,6 +37,10 @@ function ok() {
     var city = document.getElementById("city").value;
     var note = document.getElementById("note").value;
     var dealer = document.getElementById("dealer").value;
+    if (dealer=="9999") {
+        alert("请选择意向经销商");
+        return
+    };
     try {
         ajax("post", domain + "/?r=tdrive", "name="+ encodeURIComponent(name)+
             "&tel="+ tel+
